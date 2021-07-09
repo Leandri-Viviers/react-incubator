@@ -1,7 +1,12 @@
-import './App.css'
+// Components
+import NavBar from './components/NavBar'
 
-function App() {
-  return <div></div>
+const App = () => {
+  return (
+    <>
+      <NavBar title="Guidebook.io"></NavBar>
+    </>
+  )
 }
 
 export default App
