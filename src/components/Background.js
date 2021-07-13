@@ -4,7 +4,7 @@ import Footer from './Footer'
 
 const useStyles = makeStyles({
   coverImage: {
-    height: 'calc(100vh - 48px - 40px);',
+    height: 'calc(100vh - 47px - 40px);',
     backgroundImage: `url(${BackgroundImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
