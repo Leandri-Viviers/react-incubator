@@ -1,6 +1,6 @@
 // Components
 import Navbar from './components/Navbar'
-import CitySetup from './components/CitySetup'
+import CitySelect from './components/onboarding/CitySelect'
 import TimeFormat from './components/onboarding/TimeFormat'
 // Router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -14,7 +14,7 @@ const App = () => {
           <TimeFormat />
         </Route>
         <Route path="/onboarding">
-          <CitySetup />
+          <CitySelect />
         </Route>
       </Switch>
     </Router>

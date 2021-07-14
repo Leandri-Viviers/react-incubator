@@ -1,7 +1,7 @@
 import { useState } from 'react'
 // Components
-import Background from './Background'
-import CardPageLayout from './CardPageLayout'
+import Background from '../Background'
+import CardPageLayout from '../CardPageLayout'
 import { Box, TextField, Button } from '@material-ui/core'
 // Strings
 import { useTranslation } from 'react-i18next'
@@ -10,7 +10,7 @@ function storeToLocal(value) {
   localStorage.setItem('city', value)
 }
 
-function CitySetup() {
+export default function CitySelect() {
   const { t } = useTranslation()
   // State
   const [city, setCity] = useState('')
@@ -26,6 +26,7 @@ function CitySetup() {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               label={t('input_label_city')}
+              placeholder={t('input_placeholder_city')}
               color="secondary"
               variant="outlined"
               fullWidth
@@ -41,5 +42,3 @@ function CitySetup() {
     </Background>
   )
 }
-
-export default CitySetup
