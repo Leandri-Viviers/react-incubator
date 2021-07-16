@@ -1,22 +1,16 @@
 // Components
 import Navbar from './components/Navbar'
-import CitySelect from './components/onboarding/CitySelect'
-import TimeFormat from './components/onboarding/TimeFormat'
+import Routes from './components/Routes'
 // Router
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import React from 'react'
 
 const App = () => {
   return (
     <Router>
       <Navbar title="Guidebook.io"></Navbar>
-      <Switch>
-        <Route path="/onboarding/time">
-          <TimeFormat />
-        </Route>
-        <Route path="/onboarding">
-          <CitySelect />
-        </Route>
-      </Switch>
+      <Routes />
     </Router>
   )
 }

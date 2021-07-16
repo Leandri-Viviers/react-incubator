@@ -1,10 +1,10 @@
-import { makeStyles } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
 import BackgroundImage from '../assets/images/background.jpg'
 import Footer from './Footer'
 
 const useStyles = makeStyles({
   coverImage: {
-    height: 'calc(100vh - 47px - 40px);',
+    height: 'calc(100vh - 35.2px - 48px);',
     backgroundImage: `url(${BackgroundImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',

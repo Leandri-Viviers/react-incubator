@@ -1,32 +1,32 @@
 import React from 'react'
 // Strings
 import { useTranslation } from 'react-i18next'
-import { useHistory } from 'react-router-dom'
 // Components
 import Background from '../Background'
 import CardPageLayout from '../CardPageLayout'
 import { Button, Box, ToggleButtonGroup, ToggleButton } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 
 const TimeFormat = (props) => {
   const { t } = useTranslation()
   const history = useHistory()
 
   // State
-  const storedValue = localStorage.getItem('timeFormat')
-  const [timeFormat, setTimeFormat] = React.useState(Number(storedValue) || 12)
+  const storedValue = localStorage.getItem('unitFormat')
+  const [unitFormat, setUnitFormat] = React.useState(storedValue || 'metric')
 
   // Methods
   const handleFormatChange = (e, value) => {
-    setTimeFormat(value)
+    setUnitFormat(value)
   }
 
   const back = () => {
-    history.push('/onboarding')
+    history.push('/onboarding/time')
   }
 
   const next = () => {
-    localStorage.setItem('timeFormat', timeFormat)
-    history.push('/onboarding/unit')
+    localStorage.setItem('unitFormat', unitFormat)
+    history.push('/dashboard')
   }
 
   // Render
@@ -34,7 +34,7 @@ const TimeFormat = (props) => {
     <Background>
       <CardPageLayout
         heading={t('welcome_heading')}
-        subheading={t('welcome_subheading_time')}
+        subheading={t('welcome_subheading_unit')}
         actions={
           <Box display="flex" flex="1" justifyContent="space-between">
             <Button color="white" size="small" onClick={() => back()}>
@@ -48,19 +48,19 @@ const TimeFormat = (props) => {
       >
         <Box mt={3}>
           <ToggleButtonGroup
-            value={timeFormat}
+            value={unitFormat}
             exclusive
             onChange={handleFormatChange}
-            aria-label="time format"
+            aria-label="unit format"
             size="small"
             color="primary"
             fullWidth
           >
-            <ToggleButton value={12} aria-label="12 hours">
-              {t('time_format_12')}
+            <ToggleButton value="metric" aria-label="metric">
+              {t('unit_format_metric')}
             </ToggleButton>
-            <ToggleButton value={24} aria-label="24 hours">
-              <Box>{t('time_format_24')}</Box>
+            <ToggleButton value="imperial" aria-label="imperial">
+              <Box>{t('unit_format_imperial')}</Box>
             </ToggleButton>
           </ToggleButtonGroup>
         </Box>
