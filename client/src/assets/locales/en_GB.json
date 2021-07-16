@@ -1,0 +1,10 @@
+{
+  "welcome_heading": "Getting started",
+  "welcome_subheading_city": "First tell us which city you are currently in",
+  "welcome_subheading_time": "Which time format do you prefer",
+  "button_submit": "Submit",
+  "input_label_city": "Enter your city",
+  "input_placeholder_city": "eg. London, GB",
+  "time_format_12": "12 hours",
+  "time_format_24": "24 hours"
+}
