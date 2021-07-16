@@ -5,40 +5,54 @@ import CardPageLayout from '../CardPageLayout'
 import { Box, TextField, Button } from '@material-ui/core'
 // Strings
 import { useTranslation } from 'react-i18next'
-
-function storeToLocal(value) {
-  localStorage.setItem('city', value)
-}
+import { useHistory } from 'react-router'
 
 export default function CitySelect() {
   const { t } = useTranslation()
-  // State
-  const [city, setCity] = useState('')
+  const history = useHistory()
 
+  // State
+  const storedValue = localStorage.getItem('location')
+  const [city, setCity] = useState(storedValue || '')
+
+  // Methods
+  const next = () => {
+    localStorage.setItem('location', city)
+    history.push('/onboarding/time')
+  }
+
+  // Render
   return (
     <Background>
       <CardPageLayout
         heading={t('welcome_heading')}
         subheading={t('welcome_subheading_city')}
-        content={
-          <Box mt={2.5}>
-            <TextField
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              label={t('input_label_city')}
-              placeholder={t('input_placeholder_city')}
-              color="secondary"
-              variant="outlined"
-              fullWidth
-            />
+        actions={
+          <Box display="flex" flex="1" justifyContent="flex-end">
+            <Button
+              size="small"
+              color="white"
+              disabled={city.length < 1}
+              onClick={() => next()}
+            >
+              {t('button_next')}
+            </Button>
           </Box>
         }
-        actions={
-          <Button color="secondary" onClick={storeToLocal(city)}>
-            {t('button_submit')}
-          </Button>
-        }
-      ></CardPageLayout>
+      >
+        <Box mt={3}>
+          <TextField
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            label={t('input_label_city')}
+            placeholder={t('input_placeholder_city')}
+            color="primary"
+            variant="outlined"
+            fullWidth
+            autoFocus
+          />
+        </Box>
+      </CardPageLayout>
     </Background>
   )
 }
