@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 
-export default function Navbar(props) {
+const Navbar = (props) => {
   return (
     <AppBar position="static" color="primary" sx={{ position: 'relative' }}>
       <Toolbar variant="dense">
@@ -9,3 +9,5 @@ export default function Navbar(props) {
     </AppBar>
   )
 }
+
+export default Navbar
