@@ -1,43 +1,33 @@
 import React from 'react'
 // Strings
 import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
 // Components
 import Background from '../Background'
 import CardPageLayout from '../CardPageLayout'
-import {
-  makeStyles,
-  RadioGroup,
-  FormControlLabel,
-  Button,
-} from '@material-ui/core'
-
-const RadioButton = (props) => {
-  return (
-    <Button
-      variant={props.selected ? 'contained' : 'outlined'}
-      color="secondary"
-      disableElevation
-    >
-      {props.label}
-    </Button>
-  )
-}
-
-const useStyles = makeStyles({
-  flexRow: {
-    flexDirection: 'row',
-  },
-  noMargin: {
-    margin: 0,
-  },
-})
+import { Button, Box, ToggleButtonGroup, ToggleButton } from '@material-ui/core'
 
 const TimeFormat = (props) => {
   const { t } = useTranslation()
-  const classes = useStyles()
+  const history = useHistory()
 
   // State
-  const [format, setFormat] = React.useState(12)
+  const storedValue = localStorage.getItem('timeFormat')
+  const [timeFormat, setTimeFormat] = React.useState(Number(storedValue) || 12)
+
+  // Methods
+  const handleFormatChange = (e, value) => {
+    setTimeFormat(value)
+  }
+
+  const back = () => {
+    history.push('/onboarding')
+  }
+
+  const next = () => {
+    localStorage.setItem('timeFormat', timeFormat)
+    history.push('/onboarding/unit')
+  }
 
   // Render
   return (
@@ -45,38 +35,35 @@ const TimeFormat = (props) => {
       <CardPageLayout
         heading={t('welcome_heading')}
         subheading={t('welcome_subheading_time')}
-        action={t('button_submit')}
+        actions={
+          <Box display="flex" flex="1" justifyContent="space-between">
+            <Button color="white" size="small" onClick={() => back()}>
+              {t('button_back')}
+            </Button>
+            <Button color="white" size="small" onClick={() => next()}>
+              {t('button_next')}
+            </Button>
+          </Box>
+        }
       >
-        <p>{format}</p>
-        <RadioGroup
-          aria-label="format"
-          name="format"
-          value={format}
-          className={classes.flexRow}
-        >
-          <FormControlLabel
-            value={12}
-            control={
-              <RadioButton
-                label={t('time_format_12')}
-                selected={format === 12}
-              />
-            }
-            onClick={() => setFormat(12)}
-            className={classes.noMargin}
-          />
-          <FormControlLabel
-            value={24}
-            control={
-              <RadioButton
-                label={t('time_format_24')}
-                selected={format === 24}
-              />
-            }
-            onClick={() => setFormat(24)}
-            className={classes.noMargin}
-          />
-        </RadioGroup>
+        <Box mt={3}>
+          <ToggleButtonGroup
+            value={timeFormat}
+            exclusive
+            onChange={handleFormatChange}
+            aria-label="time format"
+            size="small"
+            color="primary"
+            fullWidth
+          >
+            <ToggleButton value={12} aria-label="12 hours">
+              {t('time_format_12')}
+            </ToggleButton>
+            <ToggleButton value={24} aria-label="24 hours">
+              <Box>{t('time_format_24')}</Box>
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
       </CardPageLayout>
     </Background>
   )
