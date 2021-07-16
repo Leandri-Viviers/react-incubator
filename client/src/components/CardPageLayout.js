@@ -1,5 +1,4 @@
 import {
-  makeStyles,
   Container,
   Grid,
   Card,
@@ -7,16 +6,15 @@ import {
   CardActions,
   Typography,
 } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
     height: '100%',
   },
   actions: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    flex: 1,
   },
 })
 
@@ -30,17 +28,18 @@ function CardPageLayout(props) {
         direction="row"
         alignItems="center"
         justifyContent="center"
+        height="100%"
       >
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Card>
             <CardContent>
-              <Typography variant="subtitle1" color="initial" gutterBottom>
+              <Typography variant="subtitle1" color="text.primary" gutterBottom>
                 {props.heading}
               </Typography>
-              <Typography variant="body2" color="textSecondary" gutterBottom>
+              <Typography variant="body2" color="text.secondary" gutterBottom>
                 {props.subheading}
               </Typography>
-              {props.content}
+              {props.children}
             </CardContent>
             <CardActions className={classes.actions}>
               {props.actions}
