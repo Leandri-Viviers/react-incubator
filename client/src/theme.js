@@ -1,15 +1,20 @@
-import { createTheme } from '@material-ui/core'
-import { grey, cyan } from '@material-ui/core/colors'
+import { createTheme } from '@material-ui/core/styles'
+import { cyan } from '@material-ui/core/colors'
 
 const theme = createTheme({
   spacing: 8,
   palette: {
-    type: 'dark',
+    mode: 'dark',
     primary: {
-      main: grey[900],
+      main: cyan[700],
     },
-    secondary: {
-      main: cyan['700'],
+    white: {
+      main: '#FFFFFF',
+    },
+  },
+  typography: {
+    caption: {
+      letterSpacing: 'initial',
     },
   },
 })
