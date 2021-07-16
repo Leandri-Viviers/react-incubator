@@ -2,9 +2,21 @@
   "welcome_heading": "Getting started",
   "welcome_subheading_city": "First tell us which city you are currently in",
   "welcome_subheading_time": "Which time format do you prefer",
+  "welcome_subheading_unit": "Which unit of measurement do you prefer",
+  "drawer_heading_events": "Events",
+  "drawer_heading_todos": "To do",
   "button_submit": "Submit",
+  "button_back": "Back",
+  "button_next": "Next",
   "input_label_city": "Enter your city",
   "input_placeholder_city": "eg. London, GB",
+  "input_label_event": "Add an event or todo",
+  "input_label_event_from": "From",
+  "input_label_event_to": "To",
+  "input_label_event_time": "All day",
+  "empty_events": "No events to show.",
   "time_format_12": "12 hours",
-  "time_format_24": "24 hours"
+  "time_format_24": "24 hours",
+  "unit_format_imperial": "Fahrenheit",
+  "unit_format_metric": "Celsius"
 }
