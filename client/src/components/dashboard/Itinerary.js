@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@material-ui/core/styles'
 import {
@@ -82,6 +83,13 @@ const TodoList = (props) => {
   )
 }
 
+TodoList.propTypes = {
+  items: PropTypes.array.isRequired,
+  hideCompleted: PropTypes.bool.isRequired,
+  deleteHandler: PropTypes.func.isRequired,
+  toggleHandler: PropTypes.func.isRequired,
+}
+
 const Itinerary = () => {
   const { t } = useTranslation()
   const theme = useTheme()
@@ -94,6 +102,13 @@ const Itinerary = () => {
     JSON.parse(localStorage.getItem('events')) || [],
   )
   const [hideCompleted, setHideCompleted] = useState(false)
+
+  // Weather
+  useEffect(() => {
+    this.getDailyWeather()
+      .then((res) => this.setState({ data: res.express }))
+      .catch((err) => console.log(err))
+  })
 
   // Methods
   const addEvent = () => {
