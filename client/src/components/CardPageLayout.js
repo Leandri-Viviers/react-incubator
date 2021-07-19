@@ -1,3 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+// Components
 import {
   Container,
   Grid,
@@ -18,7 +21,7 @@ const useStyles = makeStyles({
   },
 })
 
-function CardPageLayout(props) {
+const CardPageLayout = ({ heading, subheading, children, actions }) => {
   const classes = useStyles()
 
   return (
@@ -34,21 +37,26 @@ function CardPageLayout(props) {
           <Card>
             <CardContent>
               <Typography variant="subtitle1" color="text.primary" gutterBottom>
-                {props.heading}
+                {heading}
               </Typography>
               <Typography variant="body2" color="text.secondary" gutterBottom>
-                {props.subheading}
+                {subheading}
               </Typography>
-              {props.children}
+              {children}
             </CardContent>
-            <CardActions className={classes.actions}>
-              {props.actions}
-            </CardActions>
+            <CardActions className={classes.actions}>{actions}</CardActions>
           </Card>
         </Grid>
       </Grid>
     </Container>
   )
+}
+
+CardPageLayout.propTypes = {
+  heading: PropTypes.string.isRequired,
+  subheading: PropTypes.string.isRequired,
+  children: PropTypes.element,
+  actions: PropTypes.element,
 }
 
 export default CardPageLayout
