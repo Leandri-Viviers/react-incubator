@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@material-ui/core/styles'
+// Components
 import {
   Container,
   Grid,
@@ -14,6 +14,7 @@ import {
   Link,
 } from '@material-ui/core'
 import TimeRangePicker from './TimeRangePicker'
+import TodoList from './TodoList'
 
 const getDate = () => {
   const today = new Date()
