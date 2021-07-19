@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 // Components
 import { Grid, Box, Typography, Link } from '@material-ui/core'

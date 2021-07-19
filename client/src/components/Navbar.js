@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 // Components
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
