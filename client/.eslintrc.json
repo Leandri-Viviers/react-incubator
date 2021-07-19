@@ -5,6 +5,8 @@
     },
     "extends": [
         "react-app",
+        "eslint:recommended",
+        "plugin:react/recommended",
         "prettier"
     ],
     "parserOptions": {
@@ -19,6 +21,8 @@
         "prettier"
     ],
     "rules": {
+        "react/jsx-uses-vars": 1,
+        "react/react-in-jsx-scope": 1,
         "prettier/prettier": [
             "error",
             {
