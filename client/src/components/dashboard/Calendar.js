@@ -4,9 +4,7 @@ const Calendar = (props) => {
   return (
     <Container max-width="lg">
       <Grid container>
-        <Grid item>
-          
-        </Grid>
+        <Grid item></Grid>
       </Grid>
     </Container>
   )
