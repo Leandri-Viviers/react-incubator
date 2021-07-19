@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types'
 // Components
 import { Grid, Box, Typography, Link } from '@material-ui/core'
 
-function LinkText(props) {
-  const { name, link } = props.children
+const LinkText = ({ children }) => {
+  const { name, link } = children
   return (
     <Link href={link} variant="inherit" color="primary">
       {name}
@@ -10,8 +11,15 @@ function LinkText(props) {
   )
 }
 
-export default function Footer(props) {
-  const { user, source } = props.attr
+LinkText.propTypes = {
+  children: PropTypes.shape({
+    name: PropTypes.string,
+    link: PropTypes.string,
+  }),
+}
+
+const Footer = ({ attr }) => {
+  const { user, source } = attr
 
   return (
     <footer>
@@ -28,3 +36,18 @@ export default function Footer(props) {
     </footer>
   )
 }
+
+Footer.propTypes = {
+  attr: PropTypes.shape({
+    user: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    }),
+    source: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    }),
+  }),
+}
+
+export default Footer

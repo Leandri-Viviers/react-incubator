@@ -1,11 +1,11 @@
-import * as React from 'react'
-import Box from '@material-ui/core/Box'
-import Drawer from '@material-ui/core/Drawer'
+import PropTypes from 'prop-types'
+// Components
+import { Box, Drawer } from '@material-ui/core'
 import WeatherImage from '../../assets/images/weather.jpg'
 
 const drawerWidth = 350
 
-export default function PermanentDrawerLeft(props) {
+const LeftPersistentDrawer = ({ content, children }) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <Drawer
@@ -25,14 +25,16 @@ export default function PermanentDrawerLeft(props) {
         variant="permanent"
         anchor="left"
       >
-        {props.content}
+        {content}
       </Drawer>
-      <Box
-        component="main"
-        // sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        {props.children}
-      </Box>
+      <Box component="main">{children}</Box>
     </Box>
   )
 }
+
+LeftPersistentDrawer.propTypes = {
+  content: PropTypes.element,
+  children: PropTypes.element,
+}
+
+export default LeftPersistentDrawer

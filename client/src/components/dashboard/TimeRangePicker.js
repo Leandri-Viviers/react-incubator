@@ -1,15 +1,16 @@
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 // Components
 import { Grid, TextField } from '@material-ui/core'
-import AdapterDateFns from '@material-ui/lab/AdapterDateFns'
 import { LocalizationProvider, TimePicker } from '@material-ui/lab'
+import AdapterDateFns from '@material-ui/lab/AdapterDateFns'
 
 const TimePickerTextField = (props) => {
   return <TextField size="small" {...props} />
 }
 
-export default function TimeRangePicker(props) {
+const TimeRangePicker = ({ ampm }) => {
   const { t } = useTranslation()
 
   // State
@@ -31,7 +32,7 @@ export default function TimeRangePicker(props) {
                 params.inputProps.placeholder = t('input_label_event_from')
                 return <TimePickerTextField {...params} />
               }}
-              ampm={props.ampm}
+              ampm={ampm}
             />
           </LocalizationProvider>
         </Grid>
@@ -46,7 +47,7 @@ export default function TimeRangePicker(props) {
                 params.inputProps.placeholder = t('input_label_event_to')
                 return <TimePickerTextField {...params} />
               }}
-              ampm={props.ampm}
+              ampm={ampm}
             />
           </LocalizationProvider>
         </Grid>
@@ -54,3 +55,9 @@ export default function TimeRangePicker(props) {
     </>
   )
 }
+
+TimeRangePicker.propTypes = {
+  ampm: PropTypes.string.isRequired,
+}
+
+export default TimeRangePicker

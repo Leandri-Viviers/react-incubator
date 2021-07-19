@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from '@material-ui/core/styles'
+// Components
 import {
   Container,
   Grid,
@@ -10,17 +11,10 @@ import {
   TextField,
   Button,
   Paper,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Checkbox,
   Link,
-  IconButton,
 } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
 import TimeRangePicker from './TimeRangePicker'
+import TodoList from './TodoList'
 
 const getDate = () => {
   const today = new Date()
@@ -30,56 +24,6 @@ const getDate = () => {
     month: 'long',
     day: 'numeric',
   })
-}
-
-const TodoList = (props) => {
-  const items = [...props.items]
-
-  return (
-    <List>
-      {items.map((item, index) => {
-        const labelId = `checkbox-list-label-${index}`
-        return props.hideCompleted && item.completed ? null : (
-          <ListItem
-            key={index}
-            secondaryAction={
-              <IconButton
-                edge="end"
-                size="small"
-                onClick={() => props.deleteHandler(index)}
-                aria-label="delete event"
-              >
-                <CloseIcon />
-              </IconButton>
-            }
-            disablePadding
-            divider
-          >
-            <ListItemButton
-              role={undefined}
-              onClick={() => props.toggleHandler(index)}
-              dense
-            >
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={item.completed}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText
-                id={labelId}
-                primary={item.name}
-                sx={item.completed ? { textDecoration: 'line-through' } : null}
-              />
-            </ListItemButton>
-          </ListItem>
-        )
-      })}
-    </List>
-  )
 }
 
 const Itinerary = () => {
@@ -94,6 +38,13 @@ const Itinerary = () => {
     JSON.parse(localStorage.getItem('events')) || [],
   )
   const [hideCompleted, setHideCompleted] = useState(false)
+
+  // Weather
+  useEffect(() => {
+    this.getDailyWeather()
+      .then((res) => this.setState({ data: res.express }))
+      .catch((err) => console.log(err))
+  })
 
   // Methods
   const addEvent = () => {

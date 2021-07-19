@@ -4,8 +4,6 @@ import Routes from './components/Routes'
 // Router
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import React from 'react'
-
 const App = () => {
   return (
     <Router>

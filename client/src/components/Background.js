@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/styles'
 import BackgroundImage from '../assets/images/background.jpg'
 import Footer from './Footer'
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
   },
 })
 
-export default function Background(props) {
+const Background = (props) => {
   const classes = useStyles()
   const attr = {
     user: {
@@ -32,3 +33,9 @@ export default function Background(props) {
     </>
   )
 }
+
+Background.propTypes = {
+  children: PropTypes.element,
+}
+
+export default Background
