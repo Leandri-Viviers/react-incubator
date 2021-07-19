@@ -4,7 +4,7 @@ const paramHelper = require('../paramHelper');
 async function getWeatherByCityName(req, res) {
   const params = paramHelper.generateParams({
     q: req.params.name,
-    units: 'imperial', // TODO: Replace with req.params.unit
+    units: req.params.unit,
     appid: process.env.OPEN_WEATHER_API_KEY,
   })
   const url = `${process.env.OPEN_WEATHER_URL}/weather${params}`

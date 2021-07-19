@@ -57,7 +57,7 @@ const TimeRangePicker = ({ ampm }) => {
 }
 
 TimeRangePicker.propTypes = {
-  ampm: PropTypes.string.isRequired,
+  ampm: PropTypes.bool.isRequired,
 }
 
 export default TimeRangePicker
