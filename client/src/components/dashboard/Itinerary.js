@@ -11,16 +11,8 @@ import {
   TextField,
   Button,
   Paper,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Checkbox,
   Link,
-  IconButton,
 } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
 import TimeRangePicker from './TimeRangePicker'
 
 const getDate = () => {
@@ -31,63 +23,6 @@ const getDate = () => {
     month: 'long',
     day: 'numeric',
   })
-}
-
-const TodoList = (props) => {
-  const items = [...props.items]
-
-  return (
-    <List>
-      {items.map((item, index) => {
-        const labelId = `checkbox-list-label-${index}`
-        return props.hideCompleted && item.completed ? null : (
-          <ListItem
-            key={index}
-            secondaryAction={
-              <IconButton
-                edge="end"
-                size="small"
-                onClick={() => props.deleteHandler(index)}
-                aria-label="delete event"
-              >
-                <CloseIcon />
-              </IconButton>
-            }
-            disablePadding
-            divider
-          >
-            <ListItemButton
-              role={undefined}
-              onClick={() => props.toggleHandler(index)}
-              dense
-            >
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={item.completed}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': labelId }}
-                />
-              </ListItemIcon>
-              <ListItemText
-                id={labelId}
-                primary={item.name}
-                sx={item.completed ? { textDecoration: 'line-through' } : null}
-              />
-            </ListItemButton>
-          </ListItem>
-        )
-      })}
-    </List>
-  )
-}
-
-TodoList.propTypes = {
-  items: PropTypes.array.isRequired,
-  hideCompleted: PropTypes.bool.isRequired,
-  deleteHandler: PropTypes.func.isRequired,
-  toggleHandler: PropTypes.func.isRequired,
 }
 
 const Itinerary = () => {
