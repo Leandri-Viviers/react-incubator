@@ -18,5 +18,7 @@
   "time_format_12": "12 hours",
   "time_format_24": "24 hours",
   "unit_format_imperial": "Fahrenheit",
-  "unit_format_metric": "Celsius"
+  "unit_format_metric": "Celsius",
+  "button_show_completed": "Show completed",
+  "button_hide_completed": "Hide completed"
 }
